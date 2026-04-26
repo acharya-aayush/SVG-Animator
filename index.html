@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SVG Animator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SVG Animator</p>
+        <h1>Interactive SVG loader generator</h1>
+        <p class="subtitle">Paste your SVG and choose a loading effect. Generates preview and ready-to-copy HTML/CSS.</p>
+      </div>
+    </header>
+
+    <main class="grid-layout">
+      <section class="panel controls">
+        <div class="panel-header">
+          <div>
+            <h2>Input SVG</h2>
+            <p>Paste your SVG markup here. Use vector paths only.</p>
+          </div>
+          <button class="ghost-button" id="resetSample">Reset sample</button>
+        </div>
+
+        <textarea id="svgInput" placeholder="Paste SVG code here..."></textarea>
+
+        <div class="field-row">
+          <div class="choice-group">
+            <button id="variantDash" class="choice active">Dash stroke</button>
+            <button id="variantMorph" class="choice">Morph fill</button>
+          </div>
+        </div>
+
+        <div class="field-row small-gap">
+          <label>
+            Stroke weight
+            <input id="strokeWeight" type="range" min="0.5" max="14" step="0.5" value="4.5" />
+          </label>
+          <span id="weightLabel">4.5px</span>
+        </div>
+
+        <div class="field-grid">
+          <label>
+            Dash size
+            <input id="dashSize" type="number" min="50" max="1200" value="450" />
+          </label>
+          <label>
+            Speed (seconds)
+            <input id="speed" type="number" min="1" max="60" value="20" />
+          </label>
+        </div>
+
+        <label class="color-field">
+          Primary color
+          <input id="strokeColor" type="color" value="#2563eb" />
+        </label>
+
+        <button id="updateButton" class="action-button">Update loader</button>
+      </section>
+
+      <section class="panel preview-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Preview</h2>
+            <p>Live result of your SVG animation.</p>
+          </div>
+        </div>
+        <div id="previewArea" class="preview-area dash-stroke"></div>
+      </section>
+
+      <section class="panel code-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Generated code</h2>
+            <p>Toggle between HTML and CSS output.</p>
+          </div>
+          <button id="copyButton" class="ghost-button">Copy code</button>
+        </div>
+
+        <div class="tabs">
+          <button id="tabHtml" class="tab active">HTML</button>
+          <button id="tabCss" class="tab">CSS</button>
+        </div>
+        <pre id="codeDisplay" class="code-block"></pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
